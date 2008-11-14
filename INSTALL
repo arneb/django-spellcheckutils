@@ -1,0 +1,76 @@
+Install django-spellcheckutils
+==============================
+
+Put the folder ``spellcheckutils`` on your pythonpath.
+
+
+Install Aspell
+===============
+
+Get the latest version from: 
+  ftp://ftp.gnu.org/gnu/aspell/
+
+I downloaded aspell-0.60.6.tar.gz
+
+Get the dictionaries for the languages you want to check from: 
+  ftp://ftp.gnu.org/gnu/aspell/dict/0index.html
+
+Build aspell:
+
+    tar -zxvf aspell-0.60.6.tar.gz
+    cd aspell-0.60.6
+    ./configure --prefix=/usr/local/
+    make
+    sudo make install
+
+Build the german dictionary:
+
+    tar -jxvf aspell6-de-20030222-1.tar.bz2
+    cd aspell6-de-20030222-1
+    ./configure
+    make
+    sudo make install
+
+and the english dict:
+
+    tar -jxvf aspell6-en-6.0-0.tar.bz2
+    cd aspell6-en-6.0.0.tar.bz2
+    ./configure
+    make
+    sudo make install
+
+
+Get Python Bindings
+====================
+
+Quickstart: django-spellcheckutils comes bundled with a pure-python ctypes 
+binding implementation form Wojciech Muła, which will be used if no 
+python-bindings are installed on your system.
+
+For performance reasons it might be a good idea to install the c-extension
+for interfacing with aspell, called aspell-python. more information here: 
+http://www.wmula.republika.pl/proj/aspell-python/index-c.html
+
+
+Installing the C-extension
+--------------------------
+
+Download the code from: http://www.wmula.republika.pl/proj/aspell-python/index-c.html
+for example:
+  http://www.wmula.republika.pl/proj/aspell-python/download/aspell-python1.11.tar.gz
+
+then run:
+
+    tar -zxvf aspell-python1.11.tar.gz
+    cd aspell-python1.11
+    sudo python setup.py install
+
+    
+Installing the ctypes bindings
+------------------------------
+
+If you do not want to rely on the bundled version of the ctypes pyaspell bindings
+(maybe because you think it's outdated or you maybe because you need it in other
+tools anyway) just get the pyaspell.py file from: 
+http://www.wmula.republika.pl/proj/aspell-python/src/pyaspell.py 
+and put it anywhere on your pythonpath.
