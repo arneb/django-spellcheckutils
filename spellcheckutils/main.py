@@ -24,7 +24,9 @@ except ImportError:
             
 
 
-def get_speller(lang=settings.LANGUAGE_CODE, encoding=settings.DEFAULT_CHARSET):
+def get_speller(lang=settings.LANGUAGE_CODE, 
+                encoding=settings.DEFAULT_CHARSET, 
+                home_dir=getattr(settings, 'ASPELL_HOME_DIR', None)):
     """
     Returns a Speller object ready for checking words.
     
@@ -34,6 +36,8 @@ def get_speller(lang=settings.LANGUAGE_CODE, encoding=settings.DEFAULT_CHARSET):
     
     """
     args = [('encoding', encoding), ('lang', lang)]
+    if home_dir is not None:
+        args.append(('home-dir', home_dir))
     if not c_aspell:
         args = [args,]
     return Speller(*args)
