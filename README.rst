@@ -43,4 +43,4 @@ or with mod_python::
     
 Please have a detailed look at the INSTALL document and install the
 aspell-python C-Extension for interfacing with aspell. The ctypes binding 
-pyaspell seems to habe some problems on some systems.
+pyaspell seems to have some problems on some systems.
